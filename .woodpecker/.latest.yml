@@ -1,0 +1,6 @@
+pipeline:
+  build-and-push:
+    image: plugins/docker
+    repo: "${CI_REPO}"
+    tags: latest
+    secrets: [docker_username, docker_password]
