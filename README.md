@@ -4,7 +4,7 @@ used to forward ports
 ## usage
 The following environment variables need to be defined
 
-1. `REMOTE_HOST` host you want to forward to
+1. `REMOTE_HOST` host you want to forward to (default `172.17.0.1` is the docker host)
 2. `REMOTE_PORT` port on remote host to forward to
 
 port 80 inside the container will be forwarded to the remote host and port
