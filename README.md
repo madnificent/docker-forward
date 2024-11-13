@@ -2,6 +2,7 @@
 used to forward ports
 
 ## usage
+
 The following environment variables need to be defined
 
 1. `TARGET_HOST` host you want to forward to (default `172.17.0.1` is the docker host)
@@ -13,8 +14,24 @@ port `SOURCE_PORT` inside the container will be forwarded to the target host and
 * use `-P` to have docker pick a random port on the host to forward
 * use `-p <host_port>:80` to define a custom port to forward where `host_port` is the port on the host that needs to be forwarded
 
-## example
-the following will forward local host traffic from port 8080 to target host 10.32.0.1 and port 27017
+## examples
+
+### Docker
+
+The following will forward local host traffic from port 8080 to target host 10.32.0.1 and port 27017.
+
 ```
-docker run -e TARGET_HOST=10.32.0.1 -e TARGET_PORT=27017 -p 8080:80 docker-forward
+docker run -e TARGET_HOST=10.32.0.1 -e TARGET_PORT=27017 -p 8080:80 madnificent/port-forward
+```
+
+### Docker Compose
+
+The following will forward port 80 of `service-name` to port 8080 of your local host.
+
+```
+services:
+  service-name:
+    image: madnificent/forward
+    environment:
+      TARGET_PORT: 8080
 ```
